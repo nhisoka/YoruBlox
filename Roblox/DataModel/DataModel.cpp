@@ -4,6 +4,7 @@
 
 #include "DataModel.hpp"
 #include <iostream>
+#include "../Instance/RobloxInstance.hpp"
 
 DataModel* DataModel::g_Singleton = nullptr;
 
@@ -25,16 +26,12 @@ std::uint64_t DataModel::get_datamodel()
 	while (1) {
 			GetThreadContext(main_thread, &ctx);
 
-			std::uint64_t name_ptr = Driver::get_singleton()->read<std::uint64_t>(ctx.Rcx + 0x48);
+			auto possible_datamodel_instance = static_cast<RobloxInstance>(ctx.Rcx);
 
-			char name[999];
-
-			Driver::get_singleton()->read_memory(name_ptr, (uintptr_t)&name, sizeof(name));
-
-			if (strcmp(name, "Game") == 0 or strcmp(name, "App") == 0) {
+			if (possible_datamodel_instance.class_name() == "DataModel") {
 				this->datamodel = ctx.Rcx;
 
-				if (strcmp(name, "Game") == 0) {
+				if (strcmp(possible_datamodel_instance.name().c_str(), "Game") == 0) {
 					this->ingame = true;
 				}
 				else
