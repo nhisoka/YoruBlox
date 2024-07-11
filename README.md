@@ -1,6 +1,6 @@
 # YoruBlox
 
-YoruBlox is a simple level 3 script executor, which overwrites bytecode in order of a CoreScript to achieve execution.
+YoruBlox is a simple level 3 script executor, which overwrites bytecode of a CoreScript in order to achieve execution.
 
 # Compiling:
 - Visual Studio
