@@ -1,0 +1,17 @@
+{
+  "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+  "dependencies": [
+    {
+      "name": "zstd",
+      "platform": "(windows & x64)"
+    },
+    {
+      "name": "xxhash",
+      "platform": "(windows & x64)"
+    },
+    {
+      "name": "cpr",
+      "platform": "(windows & x64)"
+    }
+  ]
+}
